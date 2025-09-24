@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://meteortechnologies.gh/sitemap.xml
+
+

@@ -59,19 +59,43 @@ const Hero = ({
           </motion.h1>
 
           {/* Subtitle */}
-          <motion.p
-            className="text-lg sm:text-xl text-[#D3D3D3] mb-8 max-w-3xl mx-auto leading-relaxed"
+          <motion.div
+            className="mb-8 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {subtitle || 'AI-powered websites for Ghanaian businesses and beyond. Modern, fast, and conversion-focused.'}
-          </motion.p>
+            <p className="text-lg sm:text-xl text-[#D3D3D3] leading-relaxed">
+              {subtitle ? (
+                <>
+                  We deliver{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4500] to-orange-400 font-semibold">
+                    AI-powered, mobile-first
+                  </span>{' '}
+                  websites +{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold">
+                    marketing
+                  </span>{' '}
+                  that{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400 font-semibold">
+                    drives sales
+                  </span>{' '}
+                  for{' '}
+                  <span className="text-white font-medium">
+                    businesses and people
+                  </span>
+                  .
+                </>
+              ) : (
+                'AI-powered websites for Ghanaian businesses and beyond. Modern, fast, and conversion-focused.'
+              )}
+            </p>
+          </motion.div>
 
           {/* Description */}
           {description && (
             <motion.p
-              className="text-base text-[#D3D3D3]/80 mb-10 max-w-2xl mx-auto"
+              className="text-base text-white mb-10 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}

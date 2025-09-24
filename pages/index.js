@@ -116,8 +116,8 @@ export default function Home() {
 
       {/* Hero Section */}
       <Hero 
-        title="Personal Portfolios & Business Websites"
-        subtitle="Showcase your skills or grow your business with stunning, AI-powered websites"
+        title="Meteor Tech Builds Your Websites To Win Clients Fast"
+        subtitle="We deliver AI-powered, mobile-first websites + marketing that drives sales for businesses and people."
         description="Whether you're a professional looking to stand out to employers or a business needing an online presence, we create websites that get results. From personal portfolios to enterprise solutions."
       />
 

@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Card from '../components/Card';
+import SEO from '../components/SEO';
+import { organizationSchema, websiteSchema, serviceSchema, localBusinessSchema, reviewSchema } from '../lib/structuredData';
 
 export default function Home() {
   const services = [
@@ -100,19 +102,19 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Meteor Technologies - AI-Powered Website Design Studio in Ghana</title>
-        <meta 
-          name="description" 
-          content="Professional website design services in Ghana. We create modern, AI-powered websites for small businesses. Boost your online presence with Meteor Technologies." 
-        />
-        <meta name="keywords" content="website design Ghana, website design Accra, AI web development, Ghana web developers, small business websites" />
-        <meta property="og:title" content="Meteor Technologies - AI-Powered Website Design Studio in Ghana" />
-        <meta property="og:description" content="Professional website design services in Ghana. Modern, AI-powered websites for small businesses." />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://meteortechnologies.gh" />
-        <link rel="canonical" href="https://meteortechnologies.gh" />
-      </Head>
+      <SEO
+        title="Meteor Technologies - AI-Powered Website Design Studio in Ghana"
+        description="Professional website design services in Ghana. We create modern, AI-powered websites for small businesses. Boost your online presence with Meteor Technologies. Fast delivery, affordable pricing."
+        keywords="website design Ghana, website design Accra, AI web development, Ghana web developers, small business websites, personal portfolio websites, affordable web design Ghana, professional websites Accra"
+        url="https://meteortechnologies.gh"
+        structuredData={[
+          organizationSchema,
+          websiteSchema,
+          serviceSchema,
+          localBusinessSchema,
+          reviewSchema(testimonials)
+        ]}
+      />
 
       {/* Hero Section */}
       <Hero 

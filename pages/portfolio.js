@@ -25,6 +25,8 @@ import {
 import Hero from '../components/Hero';
 import Card from '../components/Card';
 import Modal from '../components/Modal';
+import SEO from '../components/SEO';
+import { breadcrumbSchema, portfolioItemSchema } from '../lib/structuredData';
 
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -105,26 +107,23 @@ export default function Portfolio() {
     : projects.filter(project => project.category === activeCategory);
 
 
+  const breadcrumbs = [
+    { name: 'Home', url: 'https://meteortechnologies.gh' },
+    { name: 'Portfolio', url: 'https://meteortechnologies.gh/portfolio' }
+  ];
+
   return (
     <>
-      <Head>
-        <title>Portfolio - Meteor Technologies | Personal Portfolios & Business Websites</title>
-        <meta 
-          name="description" 
-          content="Explore our portfolio of successful web development projects. See how we've helped individuals create stunning personal portfolios and businesses build their online presence in Ghana." 
-        />
-        <meta name="keywords" content="web development portfolio Ghana, personal portfolio examples, business websites Ghana, website showcase, Ghana web design, Accra web development" />
-        <meta property="og:title" content="Portfolio - Meteor Technologies | Our Best Work" />
-        <meta property="og:description" content="Explore our portfolio of successful web development projects for personal portfolios and business websites in Ghana." />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://meteortechnologies.gh/portfolio" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Portfolio - Meteor Technologies" />
-        <meta name="twitter:description" content="Explore our portfolio of successful web development projects for personal portfolios and business websites." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
-        <link rel="canonical" href="https://meteortechnologies.gh/portfolio" />
-      </Head>
+      <SEO
+        title="Portfolio - Meteor Technologies | Personal Portfolios & Business Websites"
+        description="Explore our portfolio of successful web development projects. See how we've helped individuals create stunning personal portfolios and businesses build their online presence in Ghana. Real results, proven success."
+        keywords="web development portfolio Ghana, personal portfolio examples, business websites Ghana, website showcase, Ghana web design, Accra web development, portfolio websites, web design examples"
+        url="https://meteortechnologies.gh/portfolio"
+        structuredData={[
+          breadcrumbSchema(breadcrumbs),
+          ...projects.map(project => portfolioItemSchema(project))
+        ]}
+      />
 
       {/* Modern Hero Section */}
       <section className="relative py-8 bg-black overflow-hidden">

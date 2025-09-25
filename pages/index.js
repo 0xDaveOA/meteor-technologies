@@ -109,7 +109,7 @@ export default function Home() {
         <meta name="keywords" content="website design Ghana, website design Accra, AI web development, Ghana web developers, small business websites" />
         <meta property="og:title" content="Meteor Technologies - AI-Powered Website Design Studio in Ghana" />
         <meta property="og:description" content="Professional website design services in Ghana. Modern, AI-powered websites for small businesses." />
-        <meta property="og:image" content="/images/og-image.jpg" />
+        <meta property="og:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <meta property="og:url" content="https://meteortechnologies.gh" />
         <link rel="canonical" href="https://meteortechnologies.gh" />
       </Head>

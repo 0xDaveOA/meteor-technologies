@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -24,6 +23,7 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Card from '../components/Card';
+import SEO from '../components/SEO';
 
 export default function Home() {
   const services = [
@@ -98,21 +98,70 @@ export default function Home() {
     }
   ];
 
+  // Structured data for homepage
+  const homepageStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Meteor Technologies - AI-Powered Website Design Studio in Ghana",
+    "description": "Professional website design services in Ghana. We create modern, AI-powered websites for small businesses and personal portfolios.",
+    "url": "https://meteortechnologies.gh",
+    "mainEntity": {
+      "@type": "Service",
+      "name": "Web Development Services",
+      "description": "AI-powered web development for personal portfolios and business websites",
+      "provider": {
+        "@type": "Organization",
+        "name": "Meteor Technologies"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Ghana"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Development Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Personal Portfolio Websites",
+              "description": "Professional portfolio websites for individuals and freelancers"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Company Websites",
+              "description": "Multi-page business websites with CMS and advanced features"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Applications",
+              "description": "Custom web applications with AI integration"
+            }
+          }
+        ]
+      }
+    }
+  };
+
   return (
     <>
-      <Head>
-        <title>Meteor Technologies - AI-Powered Website Design Studio in Ghana</title>
-        <meta 
-          name="description" 
-          content="Professional website design services in Ghana. We create modern, AI-powered websites for small businesses. Boost your online presence with Meteor Technologies." 
-        />
-        <meta name="keywords" content="website design Ghana, website design Accra, AI web development, Ghana web developers, small business websites" />
-        <meta property="og:title" content="Meteor Technologies - AI-Powered Website Design Studio in Ghana" />
-        <meta property="og:description" content="Professional website design services in Ghana. Modern, AI-powered websites for small businesses." />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://meteortechnologies.gh" />
-        <link rel="canonical" href="https://meteortechnologies.gh" />
-      </Head>
+      <SEO
+        title="Meteor Technologies - AI-Powered Website Design Studio in Ghana"
+        description="Professional website design services in Ghana. We create modern, AI-powered websites for small businesses and personal portfolios. Boost your online presence with Meteor Technologies."
+        keywords="website design Ghana, website design Accra, AI web development, Ghana web developers, small business websites, personal portfolio websites, company websites Ghana"
+        image="/images/og-image.jpg"
+        structuredData={homepageStructuredData}
+        breadcrumbs={[
+          { name: "Home", url: "/" }
+        ]}
+      />
 
       {/* Hero Section */}
       <Hero 

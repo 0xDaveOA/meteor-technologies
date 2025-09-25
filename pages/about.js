@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -14,6 +13,7 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Card from '../components/Card';
+import SEO from '../components/SEO';
 
 export default function About() {
   const processSteps = [
@@ -76,26 +76,49 @@ export default function About() {
     { year: '2025', event: 'Integrated AI into our workflow' },
   ];
 
+  // Structured data for about page
+  const aboutStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Meteor Technologies",
+    "description": "Learn about Meteor Technologies, Ghana's leading AI-powered web development studio.",
+    "url": "https://meteortechnologies.gh/about",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Meteor Technologies",
+      "foundingDate": "2025",
+      "description": "AI-powered web development studio specializing in personal portfolios and business websites",
+      "knowsAbout": [
+        "Web Development",
+        "AI Integration",
+        "Personal Portfolio Design",
+        "Business Website Development",
+        "SEO Optimization",
+        "Brand Design"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "AI-Powered Development Expertise"
+        }
+      ]
+    }
+  };
+
   return (
     <>
-      <Head>
-        <title>About Us - Meteor Technologies | AI-Powered Web Studio in Ghana</title>
-        <meta 
-          name="description" 
-          content="Learn about Meteor Technologies, Ghana's leading AI-powered web development studio. We create modern, responsive websites for personal portfolios and business websites across Ghana and internationally." 
-        />
-        <meta name="keywords" content="about meteor technologies, Ghana web studio, AI web development team, web developers Ghana, personal portfolio websites, business websites Ghana, Accra web developers" />
-        <meta property="og:title" content="About Us - Meteor Technologies | AI-Powered Web Studio" />
-        <meta property="og:description" content="Learn about our team and mission to empower individuals and businesses with AI-powered web solutions for personal portfolios and company websites." />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://meteortechnologies.gh/about" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Us - Meteor Technologies" />
-        <meta name="twitter:description" content="Learn about our team and mission to empower individuals and businesses with AI-powered web solutions." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
-        <link rel="canonical" href="https://meteortechnologies.gh/about" />
-      </Head>
+      <SEO
+        title="About Us - Meteor Technologies | AI-Powered Web Studio in Ghana"
+        description="Learn about Meteor Technologies, Ghana's leading AI-powered web development studio. We create modern, responsive websites for personal portfolios and business websites across Ghana and internationally."
+        keywords="about meteor technologies, Ghana web studio, AI web development team, web developers Ghana, personal portfolio websites, business websites Ghana, Accra web developers"
+        image="/images/og-image.jpg"
+        canonicalUrl="https://meteortechnologies.gh/about"
+        structuredData={aboutStructuredData}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" }
+        ]}
+      />
 
       <Hero
         title="About Meteor Technologies"

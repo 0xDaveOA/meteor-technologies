@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -26,6 +25,7 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Card from '../components/Card';
+import SEO from '../components/SEO';
 
 export default function Blog() {
   const [email, setEmail] = useState('');
@@ -164,26 +164,47 @@ export default function Blog() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  // Structured data for blog page
+  const blogStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Meteor Technologies Blog",
+    "description": "Web development insights, AI integration tips, and success stories from Ghana",
+    "url": "https://meteortechnologies.gh/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Meteor Technologies"
+    },
+    "blogPost": blogPosts.map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": {
+        "@type": "Organization",
+        "name": "Meteor Technologies"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Meteor Technologies"
+      }
+    }))
+  };
+
   return (
     <>
-      <Head>
-        <title>Blog - Meteor Technologies | Web Development Insights & Success Stories</title>
-        <meta 
-          name="description" 
-          content="Read our latest insights on web development, AI technology, and digital business strategies. Success stories, tips and trends for personal portfolios and business websites in Ghana." 
-        />
-        <meta name="keywords" content="web development blog, AI technology, Ghana business tips, SEO strategies, mobile design, e-commerce trends, personal portfolio tips, business website success stories" />
-        <meta property="og:title" content="Blog - Meteor Technologies | Web Development Insights" />
-        <meta property="og:description" content="Read our latest insights on web development, AI technology, and digital business strategies for personal portfolios and business websites in Ghana." />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://meteortechnologies.gh/blog" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Blog - Meteor Technologies" />
-        <meta name="twitter:description" content="Read our latest insights on web development, AI technology, and digital business strategies." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
-        <link rel="canonical" href="https://meteortechnologies.gh/blog" />
-      </Head>
+      <SEO
+        title="Blog - Meteor Technologies | Web Development Insights & Success Stories"
+        description="Read our latest insights on web development, AI technology, and digital business strategies. Success stories, tips and trends for personal portfolios and business websites in Ghana."
+        keywords="web development blog, AI technology, Ghana business tips, SEO strategies, mobile design, e-commerce trends, personal portfolio tips, business website success stories"
+        image="/images/og-image.jpg"
+        canonicalUrl="https://meteortechnologies.gh/blog"
+        structuredData={blogStructuredData}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" }
+        ]}
+      />
 
       <Hero
         title="Our Blog"

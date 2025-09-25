@@ -28,6 +28,8 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Card from '../components/Card';
+import SEO from '../components/SEO';
+import { serviceSchema, breadcrumbSchema, faqSchema } from '../lib/structuredData';
 
 export default function Services() {
   const pricingTiers = [
@@ -180,26 +182,43 @@ export default function Services() {
     }
   ];
 
+  const breadcrumbs = [
+    { name: 'Home', url: 'https://meteortechnologies.gh' },
+    { name: 'Services', url: 'https://meteortechnologies.gh/services' }
+  ];
+
+  const faqs = [
+    {
+      question: 'How long does it take to build a website?',
+      answer: 'Typically 1-4 weeks depending on complexity. Personal portfolios take 1-2 weeks, while custom applications may take 3-4 weeks.'
+    },
+    {
+      question: 'Do you provide ongoing support?',
+      answer: 'Yes! All our packages include support ranging from 1-6 months, plus optional maintenance packages thereafter.'
+    },
+    {
+      question: 'Can you help with hosting and domain setup?',
+      answer: 'Absolutely. We handle all technical setup including domain registration, hosting configuration, and SSL certificates.'
+    },
+    {
+      question: 'Do you work with international clients?',
+      answer: 'Yes, we serve clients across Ghana and internationally. We work remotely and can accommodate different time zones.'
+    }
+  ];
+
   return (
     <>
-      <Head>
-        <title>Web Development Services - Meteor Technologies | Personal Portfolios & Business Websites</title>
-        <meta 
-          name="description" 
-          content="Professional web development services in Ghana. Create stunning personal portfolios and business websites with our AI-powered development studio. Affordable pricing, fast delivery." 
-        />
-        <meta name="keywords" content="web development services Ghana, personal portfolio websites, business websites Ghana, website design pricing, Ghana web developers, affordable websites Ghana, Accra web development" />
-        <meta property="og:title" content="Web Development Services - Meteor Technologies" />
-        <meta property="og:description" content="Professional web development services for personal portfolios and business websites in Ghana. AI-powered development with affordable pricing." />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://meteortechnologies.gh/services" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Web Development Services - Meteor Technologies" />
-        <meta name="twitter:description" content="Professional web development services for personal portfolios and business websites in Ghana." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
-        <link rel="canonical" href="https://meteortechnologies.gh/services" />
-      </Head>
+      <SEO
+        title="Web Development Services - Meteor Technologies | Personal Portfolios & Business Websites"
+        description="Professional web development services in Ghana. Create stunning personal portfolios and business websites with our AI-powered development studio. Affordable pricing, fast delivery, guaranteed results."
+        keywords="web development services Ghana, personal portfolio websites, business websites Ghana, website design pricing, Ghana web developers, affordable websites Ghana, Accra web development, custom web applications, AI web development"
+        url="https://meteortechnologies.gh/services"
+        structuredData={[
+          serviceSchema,
+          breadcrumbSchema(breadcrumbs),
+          faqSchema(faqs)
+        ]}
+      />
 
       <Hero
         title="Web Development Services"

@@ -26,6 +26,8 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Card from '../components/Card';
+import SEO from '../components/SEO';
+import { localBusinessSchema, breadcrumbSchema, faqSchema } from '../lib/structuredData';
 
 export default function Contact() {
   const router = useRouter();
@@ -136,26 +138,24 @@ export default function Contact() {
     }
   ];
 
+  const breadcrumbs = [
+    { name: 'Home', url: 'https://meteortechnologies.gh' },
+    { name: 'Contact Us', url: 'https://meteortechnologies.gh/contact' }
+  ];
+
   return (
     <>
-      <Head>
-        <title>Contact Us - Meteor Technologies | Get Your Website Quote</title>
-        <meta 
-          name="description" 
-          content="Get in touch with Meteor Technologies for your web development needs. Free consultation and quote for personal portfolios and business websites in Ghana. Fast response, professional service." 
-        />
-        <meta name="keywords" content="contact web developer Ghana, website quote, web development consultation, Meteor Technologies contact, personal portfolio consultation, business website quote Ghana" />
-        <meta property="og:title" content="Contact Us - Meteor Technologies | Get Your Website Quote" />
-        <meta property="og:description" content="Get in touch with Meteor Technologies for your web development needs. Free consultation for personal portfolios and business websites in Ghana." />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://meteortechnologies.gh/contact" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact Us - Meteor Technologies" />
-        <meta name="twitter:description" content="Get in touch with Meteor Technologies for your web development needs. Free consultation for personal portfolios and business websites." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
-        <link rel="canonical" href="https://meteortechnologies.gh/contact" />
-      </Head>
+      <SEO
+        title="Contact Us - Meteor Technologies | Get Your Website Quote"
+        description="Get in touch with Meteor Technologies for your web development needs. Free consultation and quote for personal portfolios and business websites in Ghana. Fast response, professional service."
+        keywords="contact web developer Ghana, website quote, web development consultation, Meteor Technologies contact, personal portfolio consultation, business website quote Ghana, free consultation Ghana"
+        url="https://meteortechnologies.gh/contact"
+        structuredData={[
+          localBusinessSchema,
+          breadcrumbSchema(breadcrumbs),
+          faqSchema(faqs)
+        ]}
+      />
 
       {/* Modern Hero Section */}
       <section className="relative py-8 bg-black overflow-hidden">

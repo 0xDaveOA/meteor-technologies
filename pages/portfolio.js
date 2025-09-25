@@ -116,13 +116,13 @@ export default function Portfolio() {
         <meta name="keywords" content="web development portfolio Ghana, personal portfolio examples, business websites Ghana, website showcase, Ghana web design, Accra web development" />
         <meta property="og:title" content="Portfolio - Meteor Technologies | Our Best Work" />
         <meta property="og:description" content="Explore our portfolio of successful web development projects for personal portfolios and business websites in Ghana." />
-        <meta property="og:image" content="/images/og-image.jpg" />
+        <meta property="og:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <meta property="og:url" content="https://meteortechnologies.gh/portfolio" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Portfolio - Meteor Technologies" />
         <meta name="twitter:description" content="Explore our portfolio of successful web development projects for personal portfolios and business websites." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <link rel="canonical" href="https://meteortechnologies.gh/portfolio" />
       </Head>
 

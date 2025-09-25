@@ -175,13 +175,13 @@ export default function Blog() {
         <meta name="keywords" content="web development blog, AI technology, Ghana business tips, SEO strategies, mobile design, e-commerce trends, personal portfolio tips, business website success stories" />
         <meta property="og:title" content="Blog - Meteor Technologies | Web Development Insights" />
         <meta property="og:description" content="Read our latest insights on web development, AI technology, and digital business strategies for personal portfolios and business websites in Ghana." />
-        <meta property="og:image" content="/images/og-image.jpg" />
+        <meta property="og:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <meta property="og:url" content="https://meteortechnologies.gh/blog" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Blog - Meteor Technologies" />
         <meta name="twitter:description" content="Read our latest insights on web development, AI technology, and digital business strategies." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <link rel="canonical" href="https://meteortechnologies.gh/blog" />
       </Head>
 

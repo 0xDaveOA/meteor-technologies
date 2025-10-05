@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Zap, Linkedin, Twitter, Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { Linkedin, Twitter, Instagram, Facebook, Mail, Phone, MapPin, ArrowRight, Send } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/meteor-technologies-ghana/', color: 'hover:text-blue-400' },
-    { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/share/p/1CYLBdDFr5/?mibextid=wwXIfr', color: 'hover:text-blue-600' },
-    { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/meteor_technologies', color: 'hover:text-pink-400' },
-    { name: 'Twitter', icon: Twitter, href: '#', color: 'hover:text-blue-400' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/meteor-technologies-ghana/' },
+    { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/share/p/1CYLBdDFr5/?mibextid=wwXIfr' },
+    { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/meteor_technologies' },
+    { name: 'Twitter', icon: Twitter, href: '#' },
   ];
 
   const quickLinks = [
@@ -29,129 +29,147 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black border-t border-gray-800">
-      <div className="max-w-7xl mx-auto section-padding py-12">
-        <div className="space-y-8">
-          {/* Brand Section */}
-          <div className="text-center lg:text-left">
-            <Link href="/" className="flex items-center justify-center lg:justify-start space-x-2 mb-4">
+    <footer className="bg-black border-t border-white/10 relative overflow-hidden">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+          
+          {/* Brand Section - Full width on mobile */}
+          <div className="md:col-span-2 lg:col-span-1">
+            <Link href="/" className="inline-flex items-center space-x-2 mb-4 group">
               <motion.div
                 whileHover={{ rotate: 180 }}
                 transition={{ duration: 0.3 }}
-                className="w-7 h-7 relative"
+                className="w-8 h-8 relative flex-shrink-0"
               >
                 <Image
                   src="/images/logo.png"
                   alt="Meteor Technologies Logo"
-                  width={28}
-                  height={28}
+                  width={32}
+                  height={32}
                   className="object-contain"
                 />
               </motion.div>
-              <span className="text-xl font-bold text-white">
+              <span className="text-lg font-bold text-white group-hover:text-gray-300 transition-colors">
                 Meteor Technologies
               </span>
             </Link>
-            <p className="text-[#D3D3D3] mb-6 text-sm leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              AI-powered web development for individuals, local businesses and global businesses. 
-              We create stunning, conversion-focused websites that boost your online presence.
+            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+              AI-powered web solutions for businesses worldwide. Building digital experiences that drive growth.
             </p>
-            <div className="flex justify-center lg:justify-start space-x-4">
+            
+            {/* Social Links */}
+            <div className="flex items-center space-x-3">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.name}
                   href={social.href}
                   target={social.href !== '#' ? "_blank" : undefined}
                   rel={social.href !== '#' ? "noopener noreferrer" : undefined}
-                  className={`text-[#D3D3D3] ${social.color} transition-colors duration-200`}
-                  whileHover={{ scale: 1.1 }}
+                  className="w-9 h-9 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 border border-white/10"
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={`Follow us on ${social.name}`}
                 >
-                  <social.icon size={20} />
+                  <social.icon size={16} />
                 </motion.a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links and Services - Side by Side */}
-          <div className="grid grid-cols-2 gap-8">
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                {quickLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-[#D3D3D3] hover:text-[#FF4500] transition-colors duration-200 text-sm"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4 pb-2 border-b border-white/10">
+              Quick Links
+            </h3>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-white text-sm transition-colors duration-300 flex items-center group"
+                  >
+                    <ArrowRight size={14} className="mr-2 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Services */}
-            <div>
-              <h3 className="text-white font-semibold mb-4">Services</h3>
-              <ul className="space-y-2">
-                {services.map((service) => (
-                  <li key={service.name}>
-                    <Link
-                      href={service.href}
-                      className="text-[#D3D3D3] hover:text-[#FF4500] transition-colors duration-200 text-sm"
-                    >
-                      {service.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Services */}
+          <div>
+            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4 pb-2 border-b border-white/10">
+              Services
+            </h3>
+            <ul className="space-y-3">
+              {services.map((service) => (
+                <li key={service.name}>
+                  <Link
+                    href={service.href}
+                    className="text-gray-400 hover:text-white text-sm transition-colors duration-300 flex items-center group"
+                  >
+                    <ArrowRight size={14} className="mr-2 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Contact Info */}
-          <div className="text-center lg:text-left">
-            <h3 className="text-white font-semibold mb-4">Get in Touch</h3>
-            <div className="space-y-3 max-w-md mx-auto lg:mx-0">
-              <div className="flex items-center justify-center lg:justify-start space-x-2 text-[#D3D3D3] text-sm">
-                <Mail size={16} />
-                <span>meteortechnologies2@gmail.com</span>
-              </div>
-              <div className="flex items-center justify-center lg:justify-start space-x-2 text-[#D3D3D3] text-sm">
-                <Phone size={16} />
+          <div>
+            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4 pb-2 border-b border-white/10">
+              Get in Touch
+            </h3>
+            <div className="space-y-4">
+              <a href="mailto:meteortechnologies2@gmail.com" className="flex items-start space-x-3 text-gray-400 hover:text-white text-sm transition-colors group">
+                <Mail size={16} className="mt-0.5 flex-shrink-0 group-hover:text-white" />
+                <span className="break-all">meteortechnologies2@gmail.com</span>
+              </a>
+              <a href="tel:+233505677556" className="flex items-start space-x-3 text-gray-400 hover:text-white text-sm transition-colors group">
+                <Phone size={16} className="mt-0.5 flex-shrink-0 group-hover:text-white" />
                 <span>+233 505677556</span>
+              </a>
+              <div className="flex items-start space-x-3 text-gray-400 text-sm">
+                <MapPin size={16} className="mt-0.5 flex-shrink-0" />
+                <span>Accra, Ghana</span>
               </div>
-              <div className="flex items-center justify-center lg:justify-start space-x-2 text-[#D3D3D3] text-sm">
-                <MapPin size={16} />
-                <span>Accra, Greater Accra Region, Ghana</span>
-              </div>
-            </div>
-            <div className="mt-4 flex justify-center lg:justify-start">
-              <Link href="/contact" className="btn-primary text-sm">
-                Start Your Project
-              </Link>
+              
+              {/* CTA Button */}
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="pt-2">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center space-x-2 bg-white text-black px-4 py-2.5 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-all duration-300 w-full sm:w-auto justify-center"
+                >
+                  <Send size={16} />
+                  <span>Start Project</span>
+                </Link>
+              </motion.div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-white/10 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-[#D3D3D3] text-sm">
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 pt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 text-sm">
+            <p className="text-gray-400 text-center sm:text-left">
               © {currentYear} Meteor Technologies. All rights reserved.
             </p>
-            <div className="flex space-x-6 text-sm">
+            <div className="flex flex-wrap items-center justify-center gap-6">
               <Link
                 href="/privacy"
-                className="text-[#D3D3D3] hover:text-[#FF4500] transition-colors duration-200"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Privacy Policy
               </Link>
+              <span className="text-gray-600">•</span>
               <Link
                 href="/terms"
-                className="text-[#D3D3D3] hover:text-[#FF4500] transition-colors duration-200"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Terms of Service
               </Link>

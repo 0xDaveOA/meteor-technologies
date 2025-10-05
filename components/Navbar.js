@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Zap, Globe, Palette, ChevronDown } from 'lucide-react';
+import { Menu, X, Zap, Globe, Palette, ChevronDown, ArrowRight } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,50 +48,58 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/95 backdrop-blur-sm shadow-lg' : 'bg-black'
+        scrolled ? 'bg-black/90 backdrop-blur-md shadow-xl border-b border-white/5' : 'bg-black/80 backdrop-blur-sm'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto section-padding">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          <Link href="/" className="flex items-center space-x-2 group">
             <motion.div
               whileHover={{ rotate: 180 }}
               transition={{ duration: 0.3 }}
-              className="w-12 h-12 md:w-8 md:h-8 relative"
+              className="w-8 h-8 relative flex-shrink-0"
             >
               <Image
                 src="/images/logo.png"
                 alt="Meteor Technologies Logo"
-                width={48}
-                height={48}
+                width={32}
+                height={32}
                 className="object-contain"
                 priority
               />
             </motion.div>
-            <span className="text-xl md:text-2xl font-bold text-white group-hover:text-[#FF4500] transition-colors" style={{ fontFamily: "'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+            <span className="text-base md:text-lg font-bold text-white group-hover:text-[#FF4500] transition-colors duration-300" style={{ fontFamily: "'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif" }}>
               Meteor Technologies
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-center space-x-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    isActive(item.href)
-                      ? 'text-[#FF4500] bg-[#FF4500]/10'
-                      : 'text-[#D3D3D3] hover:text-[#FF4500] hover:bg-white/5'
-                  }`}
+                  className="relative px-3 py-2 text-sm font-medium transition-colors duration-300 group"
                   aria-label={`Navigate to ${item.name}`}
                 >
-                  {item.name}
+                  <span className={`${
+                    isActive(item.href)
+                      ? 'text-[#FF4500]'
+                      : 'text-gray-300 group-hover:text-white'
+                  }`}>
+                    {item.name}
+                  </span>
+                  {/* Modern underline indicator */}
+                  <span className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#FF4500] to-orange-400 transform transition-all duration-300 ${
+                    isActive(item.href) 
+                      ? 'scale-x-100 opacity-100' 
+                      : 'scale-x-0 group-hover:scale-x-100 opacity-0 group-hover:opacity-100'
+                  }`} />
                 </Link>
               ))}
             </div>
@@ -99,7 +107,7 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Link href="/contact" className="btn-primary">
+            <Link href="/contact" className="btn-primary text-sm px-5 py-2">
               Get Started
             </Link>
           </div>
@@ -108,128 +116,138 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-[#D3D3D3] hover:text-[#FF4500] transition-colors"
+              className="text-gray-300 hover:text-[#FF4500] transition-colors p-2"
               aria-label="Toggle mobile menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - Modern Floating Design */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            className="md:hidden absolute top-full left-0 right-0 mt-2 px-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <div className="px-2 pt-2 pb-3 space-y-0 sm:px-3 bg-white backdrop-blur-sm border-t-2 border-b-2 border-[#FF4500]/20 shadow-lg">
-              {navigation.map((item, index) => (
-                <div key={item.name}>
-                  {item.hasSubmenu ? (
-                    <div>
-                      <button
-                        onClick={() => setServicesOpen(!servicesOpen)}
-                        className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-lg font-semibold transition-all duration-300 border border-transparent hover:border-[#FF4500]/30 ${
-                          isActive(item.href)
-                            ? 'text-[#FF4500] bg-[#FF4500]/10 border-[#FF4500]/40 shadow-sm'
-                            : 'text-gray-800 hover:text-[#FF4500] hover:bg-gray-50 hover:shadow-sm'
-                        }`}
-                        style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace" }}
-                      >
-                        <span>{item.name}</span>
-                        <ChevronDown 
-                          size={20} 
-                          className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`}
-                        />
-                      </button>
-                      
-                      <AnimatePresence>
-                        {servicesOpen && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="pl-4 pr-2 py-2 space-y-2">
-                              {servicesSubmenu.map((service, serviceIndex) => {
-                                const IconComponent = service.icon;
-                                return (
-                                  <motion.div
-                                    key={service.name}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: serviceIndex * 0.1 }}
-                                  >
+            {/* Backdrop overlay */}
+            <div className="fixed inset-0 bg-black/40 backdrop-blur-sm -z-10" onClick={() => setIsOpen(false)} />
+            
+            {/* Menu Card */}
+            <motion.div 
+              className="bg-gradient-to-br from-white via-white to-gray-50 rounded-2xl shadow-2xl border border-gray-200/50 overflow-hidden"
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.2 }}
+            >
+              {/* Accent bar */}
+              <div className="h-1 bg-gradient-to-r from-[#FF4500] via-orange-400 to-pink-500" />
+              
+              <div className="p-4 space-y-1 max-h-[70vh] overflow-y-auto">
+                {navigation.map((item, index) => (
+                  <motion.div 
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    {item.hasSubmenu ? (
+                      <div>
+                        <button
+                          onClick={() => setServicesOpen(!servicesOpen)}
+                          className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                            isActive(item.href)
+                              ? 'text-white bg-gradient-to-r from-[#FF4500] to-orange-500 shadow-md'
+                              : 'text-gray-700 hover:bg-gray-100 active:bg-gray-200'
+                          }`}
+                        >
+                          <span>{item.name}</span>
+                          <ChevronDown 
+                            size={16} 
+                            className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`}
+                          />
+                        </button>
+                        
+                        <AnimatePresence>
+                          {servicesOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pt-2 pl-2 space-y-1">
+                                {servicesSubmenu.map((service) => {
+                                  const IconComponent = service.icon;
+                                  return (
                                     <Link
+                                      key={service.name}
                                       href={service.href}
-                                      className="flex items-center space-x-3 px-3 py-3 rounded-lg bg-gray-50 hover:bg-[#FF4500]/10 transition-all duration-300 group"
+                                      className="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-[#FF4500]/5 transition-all duration-200 group"
                                       onClick={() => {
                                         setIsOpen(false);
                                         setServicesOpen(false);
                                       }}
                                     >
-                                      <div className="flex-shrink-0 w-10 h-10 bg-[#FF4500]/10 rounded-lg flex items-center justify-center group-hover:bg-[#FF4500]/20 transition-colors">
-                                        <IconComponent size={24} className="text-[#FF4500]" />
+                                      <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-[#FF4500]/10 to-orange-500/10 rounded-lg flex items-center justify-center group-hover:from-[#FF4500]/20 group-hover:to-orange-500/20 transition-all">
+                                        <IconComponent size={16} className="text-[#FF4500]" />
                                       </div>
                                       <div className="flex-1 min-w-0">
-                                        <h4 className="text-base font-semibold text-gray-900 group-hover:text-[#FF4500] transition-colors">
+                                        <h4 className="text-xs font-semibold text-gray-800 group-hover:text-[#FF4500] transition-colors">
                                           {service.name}
                                         </h4>
-                                        <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
-                                          {service.description}
-                                        </p>
                                       </div>
                                     </Link>
-                                  </motion.div>
-                                );
-                              })}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ) : (
-                <Link
-                  href={item.href}
-                      className={`block px-4 py-3 rounded-lg text-lg font-semibold transition-all duration-300 border border-transparent hover:border-[#FF4500]/30 ${
-                    isActive(item.href)
-                          ? 'text-[#FF4500] bg-[#FF4500]/10 border-[#FF4500]/40 shadow-sm'
-                          : 'text-gray-800 hover:text-[#FF4500] hover:bg-gray-50 hover:shadow-sm'
-                  }`}
-                      style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace" }}
-                  onClick={() => setIsOpen(false)}
+                                  );
+                                })}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                          isActive(item.href)
+                            ? 'text-white bg-gradient-to-r from-[#FF4500] to-orange-500 shadow-md'
+                            : 'text-gray-700 hover:bg-gray-100 active:bg-gray-200'
+                        }`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </motion.div>
+                ))}
+                
+                {/* CTA Button with modern style */}
+                <motion.div 
+                  className="pt-3"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navigation.length * 0.05 + 0.1 }}
                 >
-                  {item.name}
-                </Link>
-                  )}
-                  
-                  {/* Feint separator line */}
-                  {index < navigation.length - 1 && (
-                    <div className="mx-4 my-2 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
-                  )}
-                </div>
-              ))}
-              
-              {/* Separator before CTA button */}
-              <div className="mx-4 my-3 h-px bg-gradient-to-r from-transparent via-[#FF4500]/50 to-transparent"></div>
-              
-              <div className="px-3 pt-2">
-                <Link 
-                  href="/contact" 
-                  className="w-full text-center block px-6 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-orange-400/30"
-                  style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace" }}
-                >
-                  Get Started
-                </Link>
+                  <Link 
+                    href="/contact" 
+                    className="w-full flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl font-bold text-white bg-gradient-to-r from-[#FF4500] via-orange-500 to-pink-500 hover:shadow-xl transition-all duration-300 text-sm active:scale-95"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span>Get Started</span>
+                    <ArrowRight size={16} />
+                  </Link>
+                </motion.div>
               </div>
-            </div>
+              
+              {/* Bottom fade effect */}
+              <div className="h-2 bg-gradient-to-t from-gray-100 to-transparent pointer-events-none" />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

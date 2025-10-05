@@ -72,7 +72,7 @@ export default function About() {
 
   const milestones = [
     { year: '2025', event: 'Founded Meteor Technologies' },
-    { year: '2025', event: 'Completed first 10 projects' },
+    { year: '2025', event: 'Completed first 2 projects' },
     { year: '2025', event: 'Integrated AI into our workflow' },
   ];
 

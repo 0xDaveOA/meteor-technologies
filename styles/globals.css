@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --color-background: 0 0 0; /* Pure black #000000 */
+  /* Slightly lightened cosmic background for depth */
+  --color-background: 240 6 10; /* ~#1a1a1c in HSL triplet space */
   --color-foreground: 255 255 255; /* Pure white */
   --color-muted: 156 163 175; /* Gray-400 for muted text */
   --color-primary: 59 130 246; /* Blue-500 for links/accents */

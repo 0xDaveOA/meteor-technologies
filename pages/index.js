@@ -116,9 +116,8 @@ export default function Home() {
 
       {/* Hero Section */}
       <Hero 
-        title="Meteor Tech Builds Your Websites To Win Clients Fast"
-        subtitle="We deliver AI-powered, mobile-first websites + marketing that drives sales for businesses and people."
-        description="Professional websites that deliver results—from portfolios to enterprise solutions."
+        title="Websites That Win Clients Fast"
+        subtitle="AI-powered, mobile-first websites + marketing that drive sales"
       />
 
       {/* Our Development Process - Innovative Timeline */}

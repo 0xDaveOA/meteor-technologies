@@ -27,136 +27,35 @@ const Hero = ({
         }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto section-padding py-20 lg:py-32">
-        <div className="text-center">
-          {/* Badge/Announcement */}
-          <motion.div
-            className="inline-flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Sparkles className="text-[#FF4500]" size={16} style={{ filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8))' }} />
-            <span 
-              className="text-sm text-white font-semibold"
-              style={{ 
-                textShadow: `
-                  0 1px 2px rgba(0, 0, 0, 0.95),
-                  0 2px 4px rgba(0, 0, 0, 0.9),
-                  0 4px 8px rgba(0, 0, 0, 0.7)
-                `
-              }}
-            >
-              AI-Powered Web Development Studio
-            </span>
-          </motion.div>
-
-          {/* Main Title */}
+      <div className="relative h-screen flex items-end">
+        <div className="absolute bottom-0 left-0 p-6 sm:p-8 lg:p-12 text-left">
           <motion.h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-            style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.9), 0 4px 20px rgba(0, 0, 0, 0.7)' }}
+            className="text-4xl md:text-5xl font-bold text-white"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {title || (
-              <>
-                Launch Your Online Presence and Build Your Website with{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4500] to-orange-400">
-                  Meteor Technologies
-                </span>
-              </>
-            )}
+            {title || "Websites That Win Clients Fast"}
           </motion.h1>
-
-          {/* Subtitle */}
-          <motion.div
-            className="mb-8 max-w-4xl mx-auto px-4"
+          
+          <motion.p
+            className="text-xl md:text-2xl text-gray-300 mt-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <p 
-              className="text-lg sm:text-xl text-white leading-relaxed font-semibold"
-              style={{ 
-                textShadow: `
-                  0 1px 2px rgba(0, 0, 0, 0.95),
-                  0 2px 4px rgba(0, 0, 0, 0.9),
-                  0 4px 8px rgba(0, 0, 0, 0.85),
-                  0 8px 16px rgba(0, 0, 0, 0.7),
-                  0 0 30px rgba(0, 0, 0, 0.5)
-                `,
-                WebkitTextStroke: '0.5px rgba(0, 0, 0, 0.3)',
-                paintOrder: 'stroke fill',
-              }}
-            >
-              {subtitle || 'AI-powered websites for Ghanaian businesses and beyond. Modern, fast, and conversion-focused.'}
-            </p>
-          </motion.div>
-
-          {/* Description */}
-          {description && (
-            <motion.div
-              className="mb-10 max-w-2xl mx-auto px-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <p 
-                className="text-base sm:text-lg text-white font-medium"
-                style={{ 
-                  textShadow: `
-                    0 1px 2px rgba(0, 0, 0, 0.95),
-                    0 2px 4px rgba(0, 0, 0, 0.9),
-                    0 4px 8px rgba(0, 0, 0, 0.85),
-                    0 8px 16px rgba(0, 0, 0, 0.7),
-                    0 0 30px rgba(0, 0, 0, 0.5)
-                  `,
-                  WebkitTextStroke: '0.5px rgba(0, 0, 0, 0.3)',
-                  paintOrder: 'stroke fill',
-                }}
-              >
-                {description}
-              </p>
-            </motion.div>
-          )}
-
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+            {subtitle || "AI-powered, mobile-first websites + marketing that drives sales"}
+          </motion.p>
+          
+          <motion.a
+            href="#contact"
+            className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Link
-              href={primaryCTA?.href || '/contact'}
-              className="btn-primary inline-flex items-center space-x-2 text-lg px-8 py-4"
-            >
-              <span>{primaryCTA?.text || 'Get Started'}</span>
-              <ArrowRight size={20} />
-            </Link>
-            
-            {secondaryCTA && (
-              <Link
-                href={secondaryCTA.href}
-                className="btn-secondary inline-flex items-center space-x-2 text-lg px-8 py-4"
-              >
-                <span>{secondaryCTA.text}</span>
-              </Link>
-            )}
-          </motion.div>
-
-          {/* Additional Content */}
-          {children && (
-            <motion.div
-              className="mt-16"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-            >
-              {children}
-            </motion.div>
-          )}
+            Get Started →
+          </motion.a>
         </div>
       </div>
 

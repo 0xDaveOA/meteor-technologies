@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --color-background: 0 0 0; /* Pure black #000000 */
+  --color-background: 26 26 28; /* Cosmic dark #1a1a1c */
   --color-foreground: 255 255 255; /* Pure white */
   --color-muted: 156 163 175; /* Gray-400 for muted text */
   --color-primary: 59 130 246; /* Blue-500 for links/accents */
@@ -114,7 +114,7 @@ html {
 
 /* Dark theme adjustments */
 .dark {
-  --color-background: 12 12 14;
+  --color-background: 26 26 28; /* Cosmic dark #1a1a1c */
   --color-foreground: 235 235 240;
   --color-muted: 150 150 160;
   --color-card: 16 16 18;

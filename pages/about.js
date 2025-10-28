@@ -87,13 +87,13 @@ export default function About() {
         <meta name="keywords" content="about meteor technologies, Ghana web studio, AI web development team, web developers Ghana, personal portfolio websites, business websites Ghana, Accra web developers" />
         <meta property="og:title" content="About Us - Meteor Technologies | AI-Powered Web Studio" />
         <meta property="og:description" content="Learn about our team and mission to empower individuals and businesses with AI-powered web solutions for personal portfolios and company websites." />
-        <meta property="og:image" content="/images/og-image.jpg" />
+        <meta property="og:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <meta property="og:url" content="https://meteortechnologies.gh/about" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Us - Meteor Technologies" />
         <meta name="twitter:description" content="Learn about our team and mission to empower individuals and businesses with AI-powered web solutions." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <link rel="canonical" href="https://meteortechnologies.gh/about" />
       </Head>
 

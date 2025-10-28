@@ -147,13 +147,13 @@ export default function Contact() {
         <meta name="keywords" content="contact web developer Ghana, website quote, web development consultation, Meteor Technologies contact, personal portfolio consultation, business website quote Ghana" />
         <meta property="og:title" content="Contact Us - Meteor Technologies | Get Your Website Quote" />
         <meta property="og:description" content="Get in touch with Meteor Technologies for your web development needs. Free consultation for personal portfolios and business websites in Ghana." />
-        <meta property="og:image" content="/images/og-image.jpg" />
+        <meta property="og:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <meta property="og:url" content="https://meteortechnologies.gh/contact" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Us - Meteor Technologies" />
         <meta name="twitter:description" content="Get in touch with Meteor Technologies for your web development needs. Free consultation for personal portfolios and business websites." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <link rel="canonical" href="https://meteortechnologies.gh/contact" />
       </Head>
 

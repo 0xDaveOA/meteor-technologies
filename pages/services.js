@@ -191,13 +191,13 @@ export default function Services() {
         <meta name="keywords" content="web development services Ghana, personal portfolio websites, business websites Ghana, website design pricing, Ghana web developers, affordable websites Ghana, Accra web development" />
         <meta property="og:title" content="Web Development Services - Meteor Technologies" />
         <meta property="og:description" content="Professional web development services for personal portfolios and business websites in Ghana. AI-powered development with affordable pricing." />
-        <meta property="og:image" content="/images/og-image.jpg" />
+        <meta property="og:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <meta property="og:url" content="https://meteortechnologies.gh/services" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Web Development Services - Meteor Technologies" />
         <meta name="twitter:description" content="Professional web development services for personal portfolios and business websites in Ghana." />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://meteortechnologies.gh/images/tech-pattern.jpg" />
         <link rel="canonical" href="https://meteortechnologies.gh/services" />
       </Head>
 
